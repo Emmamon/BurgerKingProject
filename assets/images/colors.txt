@@ -1,0 +1,12 @@
+primary = F6F6F6
+secondary = FFBB91
+accent = FF8E6E
+normal = 515070
+
+Burger
+Chicken Fried
+French Fried
+Hotpot
+Noddle
+Coffee
+Soft Drink
