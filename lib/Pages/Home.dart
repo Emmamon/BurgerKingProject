@@ -1,13 +1,15 @@
 import 'package:burgerking/models/Category.dart';
 import 'package:burgerking/models/Tags.dart';
+import 'package:burgerking/utils/Constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
-class Home extends StatelessWidget {
-  List<Category> cats;
-  List<Tags> tags;
-  Home(this.cats, this.tags);
+class Home extends StatefulWidget {
   @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -16,7 +18,7 @@ class Home extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _getTitleText('Tags'),
+          _buildTitleTaxBar("Tags"),
           Container(
             height: 150,
             child: Expanded(
@@ -30,10 +32,10 @@ class Home extends StatelessWidget {
                   }),
             ),
           ),
-          _getTitleText("Categories"),
           SizedBox(
             height: 20,
           ),
+          _buildTitleTaxBar("Categories"),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -45,11 +47,8 @@ class Home extends StatelessWidget {
                     childAspectRatio: 1.7,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10),
-                itemBuilder: (context, index) {
-                  
-                    return Image.asset("assets/images/${cats[index].image}");
-                  
-                },
+                itemBuilder: (context, index) =>
+                    _buildCategoryCard(cats[index]),
               ),
             ),
           )
@@ -58,16 +57,22 @@ class Home extends StatelessWidget {
     );
   }
 
-  _getTitleText(text) {
+  Widget _buildCategoryCard(Category cat) {
+    return Card(
+      child: Image.asset("assets/images/${cat.image}"),
+    );
+  }
+
+  Widget _buildTitleTaxBar(text) {
     return Container(
-      padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: Colors.brown,
-        borderRadius: BorderRadius.only(topRight: Radius.circular(150)),
-      ),
+          color: secondary,
+          borderRadius: BorderRadius.only(topRight: Radius.circular(80))),
       child: Text(
         text,
-        style: TextStyle(fontSize: 30, color: Colors.white),
+        style:
+            TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: normal),
       ),
     );
   }

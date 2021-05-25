@@ -7,6 +7,9 @@ const Color yellow = Color(0xffFDC054);
 const Color darkGrey = Color(0xff202020);
 const Color transparentYellow = Color.fromRGBO(253, 184, 70, 0.7);
 
+const samplePara =
+    "Flutter is Google's portable UI toolkit for crafting beautiful, natively compiled applications for mobile, web, and desktop from a single codebase. Flutter works with existing code, is used by developers and organizations around the world, and is free and open source.";
+
 const Color primary = Color(0xFFF6F6F6);
 const Color secondary = Color(0xFFFFBB91);
 const Color accent = Color(0xFFFF8E6E);

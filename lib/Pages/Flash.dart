@@ -16,8 +16,9 @@ class _FlashState extends State<Flash> {
     List<Tags> tags = await Api.getAllTags();
 
     if (cats.isNotEmpty && tags.isNotEmpty) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home(cats, tags)));
+      Navigator.restorablePushReplacementNamed(context, '/home');
+    } else {
+      print("Data Loading Error");
     }
   }
 
